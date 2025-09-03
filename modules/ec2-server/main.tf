@@ -31,8 +31,8 @@ resource "aws_instance" "this" {
   key_name                    = var.key_name
   vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
 
-  #  NOTE: No hardcoded availability_zone here.
-  # AWS will auto-place the instance into the AZ of the subnet you provide.
+  # NOTE: No hardcoded availability_zone here.
+  # AWS will auto-place the instance into the AZ of the subnet provided.
 
   tags = {
     Name = "${terraform.workspace}-ec2"
