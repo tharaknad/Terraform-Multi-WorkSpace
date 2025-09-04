@@ -18,7 +18,14 @@ variable "vpc_id" {
   description = "VPC ID"
 }
 
-variable "subnet_id" {
-  type        = string
-  description = "Subnet ID"
+variable "instance_count" {
+  type        = number
+  description = "Number of EC2 instances to launch"
+  default     = 1
+}
+
+variable "volume_size" {
+  type        = number
+  description = "Size of root EBS volume (GB)"
+  default     = 8
 }

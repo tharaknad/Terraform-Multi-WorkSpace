@@ -1,3 +1,11 @@
+# Fetch all subnets in the given VPC
+data "aws_subnets" "selected" {
+  filter {
+    name   = "vpc-id"
+    values = [var.vpc_id]
+  }
+}
+
 resource "aws_security_group" "allow_ssh" {
   name        = "${terraform.workspace}-allow-ssh"
   description = "Allow SSH inbound traffic"
@@ -24,21 +32,20 @@ resource "aws_security_group" "allow_ssh" {
 }
 
 resource "aws_instance" "this" {
+  count                       = var.instance_count
   ami                         = var.ami_id
   instance_type               = var.instance_type
-  subnet_id                   = var.subnet_id # <- we pass the subnet dynamically
+  subnet_id                   = element(data.aws_subnets.selected.ids, count.index % length(data.aws_subnets.selected.ids))
   associate_public_ip_address = true
   key_name                    = var.key_name
   vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
 
-<<<<<<< HEAD
-  #  NOTE: No hardcoded availability_zone here.
-=======
-  # ⚡ NOTE: No hardcoded availability_zone here.
->>>>>>> 3231e9df8c0bb005718b340994bb729b8bb54c1f
-  # AWS will auto-place the instance into the AZ of the subnet you provide.
+  root_block_device {
+    volume_size = var.volume_size
+    volume_type = "gp3"
+  }
 
   tags = {
-    Name = "${terraform.workspace}-ec2"
+    Name = "${terraform.workspace}-ec2-${count.index + 1}"
   }
 }

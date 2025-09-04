@@ -1,25 +1,29 @@
-variable "aws_region" {
-  description = "AWS region"
-  type        = string
-  default     = "us-east-1"
-}
-
 variable "ami_id" {
-  description = "AMI ID for EC2"
   type        = string
+  description = "AMI ID"
 }
 
 variable "instance_type" {
-  description = "EC2 instance type"
-  type        = string
+  type    = string
+  default = "t2.micro"
 }
 
 variable "key_name" {
-  description = "Key pair name"
   type        = string
+  description = "Key pair name"
 }
 
 variable "vpc_id" {
-  description = "VPC ID"
   type        = string
+  description = "VPC ID"
+}
+
+variable "instance_count" {
+  type    = number
+  default = 1
+}
+
+variable "volume_size" {
+  type    = number
+  default = 8
 }
