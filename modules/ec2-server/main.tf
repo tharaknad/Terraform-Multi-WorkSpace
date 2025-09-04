@@ -1,5 +1,5 @@
 resource "aws_security_group" "allow_ssh" {
-  name        = "${terraform.workspace}-allow-ssh"
+  name        = "${var.env}-allow-ssh"
   description = "Allow SSH inbound traffic"
   vpc_id      = var.vpc_id
 
@@ -24,6 +24,7 @@ resource "aws_security_group" "allow_ssh" {
 }
 
 resource "aws_instance" "this" {
+  count                       = var.instance_count
   ami                         = var.ami_id
   instance_type               = var.instance_type
   subnet_id                   = var.subnet_id # <- we pass the subnet dynamically
@@ -35,6 +36,6 @@ resource "aws_instance" "this" {
   # AWS will auto-place the instance into the AZ of the subnet provided.
 
   tags = {
-    Name = "${terraform.workspace}-ec2"
+    Name = "${var.env}-server-${count.index + 1}"
   }
 }
