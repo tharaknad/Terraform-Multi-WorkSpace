@@ -1,14 +1,14 @@
-output "public_ips" {
-  description = "Public IPs of all EC2 instances"
-  value       = aws_instance.this[*].public_ip
+output "ec2_instance_ids" {
+  description = "EC2 Instance IDs"
+  value       = module.ec2_server.instance_ids
 }
 
-output "private_ips" {
-  description = "Private IPs of all EC2 instances"
-  value       = aws_instance.this[*].private_ip
+output "ec2_private_ips" {
+  description = "Private IPs"
+  value       = module.ec2_server.private_ips
 }
 
-output "instance_ids" {
-  description = "IDs of all EC2 instances"
-  value       = aws_instance.this[*].id
+output "ec2_public_ips" {
+  description = "Public IPs"
+  value       = module.ec2_server.public_ips
 }
