@@ -31,7 +31,11 @@ resource "aws_instance" "this" {
   key_name                    = var.key_name
   vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
 
+<<<<<<< HEAD
   #  NOTE: No hardcoded availability_zone here.
+=======
+  # ⚡ NOTE: No hardcoded availability_zone here.
+>>>>>>> 3231e9df8c0bb005718b340994bb729b8bb54c1f
   # AWS will auto-place the instance into the AZ of the subnet you provide.
 
   tags = {

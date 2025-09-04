@@ -5,16 +5,38 @@
 *.tfstate
 *.tfstate.*
 
+<<<<<<< HEAD
 # Terraform state directory
 terraform.tfstate.d/
 
+=======
+>>>>>>> 3231e9df8c0bb005718b340994bb729b8bb54c1f
 # Crash log files
 crash.log
 crash.*.log
 
+<<<<<<< HEAD
+=======
+# Ignore variable override files (optional)
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore environment-specific secret vars (optional)
+*.tfvars
+
+>>>>>>> 3231e9df8c0bb005718b340994bb729b8bb54c1f
 # Terraform plan output
 *.plan
 
 # Terraform lock file (can be checked in if you want consistent provider versions)
 .terraform.lock.hcl
 
+<<<<<<< HEAD
+=======
+# Ignore terraform state directory
+terraform.tfstate.d/
+
+>>>>>>> 3231e9df8c0bb005718b340994bb729b8bb54c1f
