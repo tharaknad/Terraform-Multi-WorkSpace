@@ -2,5 +2,5 @@ ami_id         = "ami-0360c520857e3138f"
 instance_type  = "t2.micro"
 key_name       = "my-key"
 vpc_id         = "vpc-00120cdc37f794544"
-instance_count = 2
+instance_count = 3
 volume_size    = 20

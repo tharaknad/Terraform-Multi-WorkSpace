@@ -1,14 +1,15 @@
-output "ec2_instance_ids" {
-  description = "EC2 Instance IDs"
-  value       = module.ec2_server.instance_ids
+output "instance_ids" {
+  value = aws_instance.this[*].id
 }
 
-output "ec2_private_ips" {
-  description = "Private IPs"
-  value       = module.ec2_server.private_ips
+# Module outputs.tf
+
+output "public_ip" {
+  description = "Public IP(s) of the EC2 instance(s)"
+  value       = aws_instance.this[*].public_ip
 }
 
-output "ec2_public_ips" {
-  description = "Public IPs"
-  value       = module.ec2_server.public_ips
+output "private_ip" {
+  description = "Private IP(s) of the EC2 instance(s)"
+  value       = aws_instance.this[*].private_ip
 }

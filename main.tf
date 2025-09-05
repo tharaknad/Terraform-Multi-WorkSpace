@@ -2,7 +2,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-module "ec2_server" {
+module "ec2-server" {
   source         = "./modules/ec2-server"
   ami_id         = var.ami_id
   instance_type  = var.instance_type
@@ -12,10 +12,4 @@ module "ec2_server" {
   volume_size    = var.volume_size
 }
 
-output "all_public_ips" {
-  value = module.ec2_server.public_ips
-}
 
-output "all_private_ips" {
-  value = module.ec2_server.private_ips
-}
